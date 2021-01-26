@@ -497,7 +497,7 @@ GROUP BY [Description]";
                 string columnName = column.ColumnName;
 
                 // Person attributes always start with "Ind"
-                if ( columnName.Contains( "Ind" ) && !columnName.Contains( "Individual" ) )
+                if ( ( columnName.Contains( "Ind" ) && !columnName.Contains( "Individual" ) ) || columnName.StartsWith( "Location" ) )
                 {
                     PersonAttributes.Add( column.ColumnName, column.DataType.Name );
                 }
@@ -521,7 +521,7 @@ GROUP BY [Description]";
                     string columnName = column.ColumnName;
 
                     // Person attributes always start with "Ind"
-                    if ( ( columnName.Contains( "Ind" ) || columnName.Contains( "Fam" ) ) && 
+                    if ( ( columnName.StartsWith( "Ind" ) || columnName.StartsWith( "Fam" ) || columnName.StartsWith("Location") ) && 
                            !columnName.Contains( "Individual" ) && !columnName.Contains( "Family" ) )
                     {
                         personFields.Add( column.ColumnName );
